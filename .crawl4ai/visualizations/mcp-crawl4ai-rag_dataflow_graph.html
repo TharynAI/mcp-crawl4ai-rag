@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MCP Crawl4AI RAG - Data Flow Visualization</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: 'Consolas', 'Monaco', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #0d1117;
+            color: #c9d1d9;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background: #161b22;
+            padding: 15px;
+            border-bottom: 1px solid #30363d;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 20px;
+            color: #58a6ff;
+        }
+        
+        .info {
+            color: #8b949e;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+            font-size: 11px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        #graph {
+            flex: 1;
+            background: #0d1117;
+        }
+        
+        .tooltip {
+            position: absolute;
+            padding: 8px;
+            background: #1c2128;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            font-size: 11px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        
+        .tooltip strong {
+            color: #58a6ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Data Flow Graph - MCP Crawl4AI RAG</h1>
+            <div class="info">
+                Generated on 2025-10-04 13:42:20 | 
+                142 nodes | 125 connections
+            </div>
+            
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #58a6ff;"></div>
+                    <span>File</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #a371f7;"></div>
+                    <span>Class</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #8cc85f;"></div>
+                    <span>Method</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #f97583;"></div>
+                    <span>Import</span>
+                </div>
+                <div class="legend-item">
+                    <span style="color: #8b949e;">→ Data Flow Direction</span>
+                </div>
+            </div>
+        </div>
+        
+        <svg id="graph"></svg>
+        <div class="tooltip"></div>
+    </div>
+
+    <script>
+        const data = {
+            nodes: [{"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:630", "label": "client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:786", "label": "EmbedderClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:0", "label": "create_batch()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:941", "label": "nodes.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:967", "label": "EntityNode", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:1", "label": "get_by_group_ids()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:933", "label": "helpers.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:881", "label": "errors.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:13", "label": "CommunityNode", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:14", "label": "save()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:15", "label": "generate_name_embedding()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:2", "label": "gemini.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:18", "label": "GeminiEmbedder", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:19", "label": "create()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:20", "label": "create_batch()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:26", "label": "load_name_embedding()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:22", "label": "openai.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:30", "label": "OpenAIEmbedder", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:32", "label": "create()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:33", "label": "get_by_uuid()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:34", "label": "get_by_uuids()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:36", "label": "get_by_group_ids()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:45", "label": "create_batch()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:47", "label": "voyage.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52", "label": "VoyageAIEmbedder", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:55", "label": "create()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:58", "label": "bge_reranker_client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:59", "label": "BGERerankerClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:60", "label": "rank()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:61", "label": "client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:62", "label": "CrossEncoderClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:64", "label": "rank()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:65", "label": "gemini_reranker_client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:66", "label": "GeminiRerankerClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:67", "label": "rank()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:71", "label": "create_batch()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:68", "label": "openai_reranker_client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:70", "label": "OpenAIRerankerClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:73", "label": "rank()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:82", "label": "anthropic_client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:90", "label": "AnthropicClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:92", "label": "generate_response()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:99", "label": "client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:100", "label": "LLMClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:101", "label": "generate_response()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:117", "label": "gemini_client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:121", "label": "GeminiClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:124", "label": "salvage_json()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:93", "label": "driver.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:123", "label": "GraphDriverSession", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:130", "label": "run()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:132", "label": "close()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:136", "label": "execute_write()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:137", "label": "generate_response()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "label": "GraphDriver", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:150", "label": "execute_query()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:151", "label": "session()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:161", "label": "close()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:170", "label": "delete_all_indexes()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:173", "label": "with_database()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:176", "label": "build_fulltext_query()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:177", "label": "save_to_aoss()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:179", "label": "clear_aoss_indices()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:167", "label": "openai_base_client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:175", "label": "BaseOpenAIClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:187", "label": "generate_response()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:197", "label": "openai_generic_client.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:200", "label": "OpenAIGenericClient", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:204", "label": "generate_response()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:199", "label": "ingest.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:216", "label": "AsyncWorker", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:217", "label": "worker()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:763", "label": "graph_data_operations.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:774", "label": "retrieve.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:195", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:668", "label": "ingest.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:603", "label": "common.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:536", "label": "zep_graphiti.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:229", "label": "start()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:231", "label": "stop()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "label": "graphiti_mcp_server.py", "type": "file", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:233", "label": "GraphitiLLMConfig", "type": "class", "level": 1}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:235", "label": "from_env()", "type": "method", "level": 2}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:740", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:11", "label": "temporal_operations.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:221", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:242", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:699", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:652", "label": "bulk_utils.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:770", "label": "search_config.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:481", "label": "extract_edges.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:600", "label": "invalidate_edges.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:49", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:303", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:744", "label": "search.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:517", "label": "extract_edge_dates.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:306", "label": "dedupe_edges.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:237", "label": "falkordb_driver.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:672", "label": "prompt_helpers.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:789", "label": "node_operations.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:206", "label": "utils.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:87", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:751", "label": "edge_operations.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:694", "label": "datetime_utils.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:139", "label": "groq_client.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:700", "label": "community_operations.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:74", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:304", "label": "search_helpers.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:334", "label": "neo4j_driver.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:401", "label": "eval.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:651", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:245", "label": "node_db_queries.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:212", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:921", "label": "graphiti_types.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:616", "label": "lib.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:46", "label": "utils.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:927", "label": "graph_queries.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:591", "label": "telemetry.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:361", "label": "dedupe_nodes.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:111", "label": "errors.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:225", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:664", "label": "models.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:54", "label": "entity_types_utils.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:532", "label": "extract_nodes.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:328", "label": "search_utils.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:57", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:719", "label": "dedup_helpers.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:226", "label": "edge_db_queries.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:193", "label": "openai_client.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:218", "label": "search_config_recipes.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:602", "label": "azure_openai.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:106", "label": "config.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:219", "label": "search_filters.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:839", "label": "edges.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:891", "label": "graphiti.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:272", "label": "kuzu_driver.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:678", "label": "summarize_nodes.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:585", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:406", "label": "neptune_driver.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:575", "label": "__init__.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:96", "label": "azure_openai_client.py", "type": "import", "level": 0}, {"id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:241", "label": "from_cli_and_env()", "type": "method", "level": 2}],
+            links: [{"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:630", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:786", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:786", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:0", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:941", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:967", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:967", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:1", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:941", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:933", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:941", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:881", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:941", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:13", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:13", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:14", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:13", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:15", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:2", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:18", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:18", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:19", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:18", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:20", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:13", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:26", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:22", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:30", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:30", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:32", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:13", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:33", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:13", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:34", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:13", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:36", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:30", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:45", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:47", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:55", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:58", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:59", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:59", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:60", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:61", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:62", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:62", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:64", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:65", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:66", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:66", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:67", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:71", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:68", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:70", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:70", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:73", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:82", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:90", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:90", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:92", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:99", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:100", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:100", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:101", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:117", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:121", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:121", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:124", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:93", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:123", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:123", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:130", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:123", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:132", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:123", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:136", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:121", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:137", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:93", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:150", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:151", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:161", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:170", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:173", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:176", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:177", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:147", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:179", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:167", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:175", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:175", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:187", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:197", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:200", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:200", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:204", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:199", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:216", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:216", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:217", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:199", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:763", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:199", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:774", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:199", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:195", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:199", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:668", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:199", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:603", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:199", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:536", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:216", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:229", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:216", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:231", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:233", "type": "defines", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:233", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:235", "type": "contains", "arrow": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:740", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:11", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:221", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:242", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:699", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:652", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:770", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:481", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:600", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:49", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:303", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:744", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:517", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:306", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:237", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:672", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:789", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:206", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:87", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:751", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:694", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:139", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:700", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:74", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:304", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:334", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:401", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:651", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:245", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:212", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:921", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:616", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:46", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:927", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:591", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:361", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:111", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:225", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:664", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:54", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:532", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:328", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:57", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:719", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:226", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:193", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:218", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:602", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:106", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:219", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:839", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:891", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:272", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:678", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:585", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:406", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:575", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:77", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:96", "type": "imports", "arrow": true, "dashed": true}, {"source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:233", "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:241", "type": "contains", "arrow": true}]
+        };
+        
+        const svg = d3.select("#graph");
+        const container = document.getElementById("graph");
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        
+        svg.attr("width", width).attr("height", height);
+        
+        // Color scheme for dark theme
+        const colors = {
+            file: "#58a6ff",
+            class: "#a371f7",
+            method: "#8cc85f",
+            import: "#f97583",
+            function: "#ffa657"
+        };
+        
+        const tooltip = d3.select(".tooltip");
+        
+        // Create arrow markers
+        svg.append("defs").selectAll("marker")
+            .data(["arrow", "arrow-dashed"])
+            .join("marker")
+            .attr("id", d => d)
+            .attr("viewBox", "0 -5 10 10")
+            .attr("refX", 20)
+            .attr("refY", 0)
+            .attr("markerWidth", 8)
+            .attr("markerHeight", 8)
+            .attr("orient", "auto")
+            .append("path")
+            .attr("d", "M0,-5L10,0L0,5")
+            .attr("fill", "#8b949e");
+        
+        // Create simulation with directional force
+        const simulation = d3.forceSimulation(data.nodes)
+            .force("link", d3.forceLink(data.links).id(d => d.id).distance(80))
+            .force("charge", d3.forceManyBody().strength(-400))
+            .force("x", d3.forceX(d => width * (0.2 + d.level * 0.3)).strength(0.3))
+            .force("y", d3.forceY(height / 2).strength(0.1))
+            .force("collision", d3.forceCollide().radius(25));
+        
+        // Create container groups
+        const g = svg.append("g");
+        
+        // Create links with arrows
+        const link = g.append("g")
+            .selectAll("line")
+            .data(data.links)
+            .join("line")
+            .attr("stroke", d => d.dashed ? "#30363d" : "#484f58")
+            .attr("stroke-opacity", 0.8)
+            .attr("stroke-width", d => d.type === 'imports' ? 1 : 2)
+            .attr("stroke-dasharray", d => d.dashed ? "5,5" : null)
+            .attr("marker-end", d => d.arrow ? (d.dashed ? "url(#arrow-dashed)" : "url(#arrow)") : null);
+        
+        // Create nodes
+        const node = g.append("g")
+            .selectAll("g")
+            .data(data.nodes)
+            .join("g")
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+        
+        // Add circles for nodes
+        node.append("circle")
+            .attr("r", d => d.type === 'file' ? 8 : d.type === 'class' ? 7 : 5)
+            .attr("fill", d => colors[d.type] || "#8b949e")
+            .attr("stroke", "#0d1117")
+            .attr("stroke-width", 2);
+        
+        // Add labels
+        node.append("text")
+            .text(d => d.label)
+            .attr("x", 12)
+            .attr("y", 4)
+            .style("font-size", "10px")
+            .style("fill", "#c9d1d9");
+        
+        // Tooltip interactions
+        node.on("mouseover", function(event, d) {
+            tooltip.transition().duration(200).style("opacity", .95);
+            tooltip.html(`
+                <strong>${d.type.toUpperCase()}</strong><br/>
+                ${d.label}<br/>
+                Level: ${d.level}
+            `)
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", function(d) {
+            tooltip.transition().duration(500).style("opacity", 0);
+        });
+        
+        // Zoom functionality
+        const zoom = d3.zoom()
+            .scaleExtent([0.5, 3])
+            .on("zoom", (event) => {
+                g.attr("transform", event.transform);
+            });
+        
+        svg.call(zoom);
+        
+        // Simulation tick
+        simulation.on("tick", () => {
+            link
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
+            
+            node.attr("transform", d => `translate(${d.x},${d.y})`);
+        });
+        
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+        
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+        
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
+    </script>
+</body>
+</html>

@@ -69,6 +69,26 @@ The server provides essential web crawling and search tools:
 7. **`check_ai_script_hallucinations`**: Analyze Python scripts for AI hallucinations by validating imports, method calls, and class usage against the knowledge graph
 8. **`query_knowledge_graph`**: Explore and query the Neo4j knowledge graph with commands like `repos`, `classes`, `methods`, and custom Cypher queries
 
+### Graph Storage Configuration
+
+All knowledge graphs and visualizations are stored in a standardized directory structure:
+
+```
+{base_folder}/.crawl4ai/
+├── knowledge_graphs/     # Neo4j knowledge graph data and exports
+├── visualizations/       # HTML visualizations and interactive graphs
+├── repository_data/      # Parsed repository information
+└── analysis_reports/     # AI hallucination detection reports
+```
+
+**Example**: When working in `/mnt/d/GitHub/BangMPCs/3rd/mcp-crawl4ai-rag`, graphs are saved to:
+- Knowledge graphs: `./crawl4ai/knowledge_graphs/`
+- Visualizations: `./crawl4ai/visualizations/`
+- Repository data: `./crawl4ai/repository_data/`
+- Analysis reports: `./crawl4ai/analysis_reports/`
+
+This structure ensures consistent organization and easy access to generated graphs regardless of the working directory.
+
 ## Prerequisites
 
 - [Docker/Docker Desktop](https://www.docker.com/products/docker-desktop/) if running the MCP server as a container (recommended)

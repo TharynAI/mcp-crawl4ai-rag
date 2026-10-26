@@ -1,0 +1,1148 @@
+{
+  "nodes": [
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:335",
+      "name": "mcp-crawl4ai-rag",
+      "type": "repository",
+      "group": 1
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "name": "utils.py",
+      "path": "src/utils.py",
+      "type": "file",
+      "group": 2
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52619",
+      "name": "search_code_examples",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52618",
+      "name": "extract_source_summary",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52617",
+      "name": "update_source_info",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52616",
+      "name": "add_code_examples_to_supabase",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52615",
+      "name": "generate_code_example_summary",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52614",
+      "name": "extract_code_blocks",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52613",
+      "name": "search_documents",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52612",
+      "name": "add_documents_to_supabase",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52611",
+      "name": "process_chunk_with_context",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52610",
+      "name": "generate_contextual_embedding",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52609",
+      "name": "create_embedding",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52608",
+      "name": "create_embeddings_batch",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52607",
+      "name": "get_supabase_client",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "name": "crawl4ai_mcp.py",
+      "path": "src/crawl4ai_mcp.py",
+      "type": "file",
+      "group": 2
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52575",
+      "name": "Crawl4AIContext",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52605",
+      "name": "normalize_url",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52604",
+      "name": "main",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52603",
+      "name": "crawl_recursive_internal_links",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52602",
+      "name": "crawl_batch",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52601",
+      "name": "crawl_markdown_file",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52600",
+      "name": "parse_github_repository",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52599",
+      "name": "query_knowledge_graph",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52598",
+      "name": "check_ai_script_hallucinations",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52597",
+      "name": "search_code_examples",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52596",
+      "name": "perform_rag_query",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52595",
+      "name": "get_available_sources",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52594",
+      "name": "smart_crawl_url",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52593",
+      "name": "crawl_single_page",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52592",
+      "name": "process_code_example",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52591",
+      "name": "extract_section_info",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52590",
+      "name": "smart_chunk_markdown",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52589",
+      "name": "parse_sitemap",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52588",
+      "name": "is_txt",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52587",
+      "name": "is_sitemap",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52586",
+      "name": "rerank_results",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52585",
+      "name": "crawl4ai_lifespan",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52584",
+      "name": "validate_github_url",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52583",
+      "name": "validate_script_path",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52582",
+      "name": "format_neo4j_error",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52581",
+      "name": "validate_neo4j_connection",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52562",
+      "name": "query_knowledge_graph.py",
+      "path": "knowledge_graphs/query_knowledge_graph.py",
+      "type": "file",
+      "group": 2
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "name": "KnowledgeGraphQuerier",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52571",
+      "name": "run_custom_query",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52573",
+      "name": "main",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52572",
+      "name": "interactive_mode",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52570",
+      "name": "search_method",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52569",
+      "name": "explore_class",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52568",
+      "name": "list_classes",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52567",
+      "name": "explore_repository",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52566",
+      "name": "list_repositories",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52565",
+      "name": "close",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52564",
+      "name": "initialize",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52549",
+      "name": "parse_repo_into_neo4j.py",
+      "path": "knowledge_graphs/parse_repo_into_neo4j.py",
+      "type": "file",
+      "group": 2
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52552",
+      "name": "DirectNeo4jExtractor",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52559",
+      "name": "search_graph",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52561",
+      "name": "handle_remove_readonly",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52560",
+      "name": "main",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52558",
+      "name": "analyze_repository",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52557",
+      "name": "get_python_files",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52556",
+      "name": "clone_repo",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52555",
+      "name": "close",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52554",
+      "name": "clear_repository_data",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52553",
+      "name": "initialize",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52550",
+      "name": "Neo4jCodeAnalyzer",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52551",
+      "name": "analyze_python_file",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "name": "knowledge_graph_validator.py",
+      "path": "knowledge_graphs/knowledge_graph_validator.py",
+      "type": "file",
+      "group": 2
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52545",
+      "name": "KnowledgeGraphValidator",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52548",
+      "name": "validate_script",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52547",
+      "name": "close",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52546",
+      "name": "initialize",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52535",
+      "name": "ScriptValidationResult",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52530",
+      "name": "ClassValidation",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52524",
+      "name": "FunctionValidation",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52520",
+      "name": "AttributeValidation",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52514",
+      "name": "MethodValidation",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52509",
+      "name": "ImportValidation",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52503",
+      "name": "ValidationResult",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52502",
+      "name": "ValidationStatus",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52495",
+      "name": "hallucination_reporter.py",
+      "path": "knowledge_graphs/hallucination_reporter.py",
+      "type": "file",
+      "group": 2
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52496",
+      "name": "HallucinationReporter",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52500",
+      "name": "print_summary",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52499",
+      "name": "save_markdown_report",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52498",
+      "name": "save_json_report",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52497",
+      "name": "generate_comprehensive_report",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "name": "ai_script_analyzer.py",
+      "path": "knowledge_graphs/ai_script_analyzer.py",
+      "type": "file",
+      "group": 2
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52492",
+      "name": "AIScriptAnalyzer",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52493",
+      "name": "analyze_script",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52494",
+      "name": "analyze_ai_script",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:767",
+      "name": "AnalysisResult",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:685",
+      "name": "ClassInstantiation",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:550",
+      "name": "FunctionCall",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:468",
+      "name": "AttributeAccess",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:453",
+      "name": "MethodCall",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:422",
+      "name": "ImportInfo",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:341",
+      "name": "ai_hallucination_detector.py",
+      "path": "knowledge_graphs/ai_hallucination_detector.py",
+      "type": "file",
+      "group": 2
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:353",
+      "name": "AIHallucinationDetector",
+      "type": "class",
+      "group": 3
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:389",
+      "name": "batch_detect",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:398",
+      "name": "main",
+      "type": "function",
+      "group": 5
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:383",
+      "name": "detect_hallucinations",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:373",
+      "name": "close",
+      "type": "method",
+      "group": 4
+    },
+    {
+      "id": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:370",
+      "name": "initialize",
+      "type": "method",
+      "group": 4
+    }
+  ],
+  "links": [
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:335",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "type": "contains"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52619",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52618",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52617",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52616",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52615",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52614",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52613",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52612",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52611",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52610",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52609",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52608",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52606",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52607",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:335",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "type": "contains"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52575",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52605",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52604",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52603",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52602",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52601",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52600",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52599",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52598",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52597",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52596",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52595",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52594",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52593",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52592",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52591",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52590",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52589",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52588",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52587",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52586",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52585",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52584",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52583",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52582",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52574",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52581",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:335",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52562",
+      "type": "contains"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52562",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52571",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52562",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52573",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52562",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52572",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52570",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52569",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52568",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52567",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52566",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52565",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52563",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52564",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:335",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52549",
+      "type": "contains"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52549",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52552",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52552",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52559",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52549",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52561",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52549",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52560",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52552",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52558",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52552",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52557",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52552",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52556",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52552",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52555",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52552",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52554",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52552",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52553",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52549",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52550",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52550",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52551",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:335",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "type": "contains"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52545",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52545",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52548",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52545",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52547",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52545",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52546",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52535",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52530",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52524",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52520",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52514",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52509",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52503",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52501",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52502",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:335",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52495",
+      "type": "contains"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52495",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52496",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52496",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52500",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52496",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52499",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52496",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52498",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52496",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52497",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:335",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "type": "contains"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52492",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52492",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52493",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:52494",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:767",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:685",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:550",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:468",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:453",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:419",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:422",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:335",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:341",
+      "type": "contains"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:341",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:353",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:353",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:389",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:341",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:398",
+      "type": "defines"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:353",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:383",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:353",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:373",
+      "type": "has_method"
+    },
+    {
+      "source": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:353",
+      "target": "4:62a7fd5c-2a7a-4d66-befb-45cc0e910a8f:370",
+      "type": "has_method"
+    }
+  ],
+  "metadata": {
+    "repository": "mcp-crawl4ai-rag",
+    "generated_at": "2025-10-04T10:02:55.659160",
+    "node_count": 103,
+    "link_count": 102
+  }
+}

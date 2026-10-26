@@ -6,7 +6,6 @@ the appropriate crawl method based on URL type (sitemap, txt file, or regular we
 Also includes AI hallucination detection and repository parsing tools using Neo4j knowledge graphs.
 """
 from mcp.server.fastmcp import FastMCP, Context
-from sentence_transformers import CrossEncoder
 from contextlib import asynccontextmanager
 from collections.abc import AsyncIterator
 from dataclasses import dataclass
@@ -118,7 +117,7 @@ class Crawl4AIContext:
     """Context for the Crawl4AI MCP server."""
     crawler: AsyncWebCrawler
     supabase_client: Client
-    reranking_model: Optional[CrossEncoder] = None
+    reranking_model: Optional[Any] = None  # CrossEncoder when USE_RERANKING=true
     knowledge_validator: Optional[Any] = None  # KnowledgeGraphValidator when available
     repo_extractor: Optional[Any] = None       # DirectNeo4jExtractor when available
 
@@ -146,10 +145,11 @@ async def crawl4ai_lifespan(server: FastMCP) -> AsyncIterator[Crawl4AIContext]:
     # Initialize Supabase client
     supabase_client = get_supabase_client()
     
-    # Initialize cross-encoder model for reranking if enabled
+    # Initialize cross-encoder model for reranking if enabled (lazy import)
     reranking_model = None
     if os.getenv("USE_RERANKING", "false") == "true":
         try:
+            from sentence_transformers import CrossEncoder
             reranking_model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
         except Exception as e:
             print(f"Failed to load reranking model: {e}")
@@ -223,7 +223,7 @@ mcp = FastMCP(
     port=os.getenv("PORT", "8051")
 )
 
-def rerank_results(model: CrossEncoder, query: str, results: List[Dict[str, Any]], content_key: str = "content") -> List[Dict[str, Any]]:
+def rerank_results(model: Any, query: str, results: List[Dict[str, Any]], content_key: str = "content") -> List[Dict[str, Any]]:
     """
     Rerank search results using a cross-encoder model.
     
